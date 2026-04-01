@@ -12,39 +12,6 @@ $recorde = $_SESSION['recorde'] ?? 0;
 
 $questionario = $_SESSION['questionario'] ?? [];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $respostasUsuario = $_POST['respostas'] ?? [];
-    $acertos = 0;
-
-    foreach ($questionario as $questao) {
-
-        $num = $questao['num'];
-
-        if (!isset($respostasUsuario[$num])) { continue; }
-
-        $respostaUsuario = $respostasUsuario[$num];
-        $respostaCorreta = $questao['respostaCorreta'];
-
-        $respostaUsuario = (array) $respostaUsuario;
-        $respostaCorreta = (array) $respostaCorreta;
-
-        sort($respostaUsuario);
-        sort($respostaCorreta);
-
-        if ($respostaUsuario == $respostaCorreta) {
-            $acertos++;
-        }
-    }
-
-    if ($acertos > $recorde) {
-        $_SESSION['recorde'] = $acertos;
-    }
-
-    echo "<h2>Resultado: $acertos / " . count($questionario) . "</h2>";
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div id="conta">
             <p>Aluno: <?= $nome ?></p>
+            <p>Email: <?= $email ?></p>
             <form action=logout.php method="POST">
                 <button type="submit">Sair</button>
             </form>
@@ -70,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div id="questionario">
 
-            <form method="POST">
+            <form action="resultado.php" method="POST">
 
                 <?php foreach($questionario as $questao):?>
                     <h3 id="enunciado"><?= $questao['num'] ?>. <?= $questao['enunciado']?></h3>
@@ -103,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                 <?php endforeach; ?>
-                
+                <input type="hidden" name="concluido" value="concluido">
                 <button type="submit">Enviar</button>
             </form>
         </div>
