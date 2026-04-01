@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['nome'])){
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
     exit("Você precisa estar logado para acessar esta página!");
 }
 
@@ -19,7 +19,7 @@ $questionario = $_SESSION['questionario'] ?? [];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <title>Simulado P1</title>
 </head>
 <body>
@@ -30,7 +30,7 @@ $questionario = $_SESSION['questionario'] ?? [];
         <div id="conta">
             <p>Aluno: <?= $nome ?></p>
             <p>Email: <?= $email ?></p>
-            <form action=logout.php method="POST">
+            <form action="../scripts/logout.php" method="POST">
                 <button type="submit">Sair</button>
             </form>
         </div>

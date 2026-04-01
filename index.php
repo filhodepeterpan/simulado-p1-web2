@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_SESSION['nome'] = $nome;
         setcookie('email', $email, time() + 60*60*24*30);
 
-        header('Location: pages/questionario.php');
+        header('Location: php/scripts/questionario.php');
     }
 }
 

@@ -25,4 +25,17 @@ function confGabarito($questionario, $respostasUsuario) {
     return $acertos;
 }
 
+function mensagemMotivacional() {
+    $url = 'https://raw.githubusercontent.com/devmatheusguerra/frasesJSON/main/frases.json';
+    
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $resposta = curl_exec($ch);
+    $mensagens = json_decode($resposta, true);
+
+    $i = array_rand($mensagens);
+    return $mensagens[$i]['frase'];
+}
+
 ?>

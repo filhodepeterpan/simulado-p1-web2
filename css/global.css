@@ -19,3 +19,7 @@ body{
 .questao{
     padding-bottom: 0.5rem;
 }
+
+#mensagem-motivacional{
+    font-style: italic;
+}

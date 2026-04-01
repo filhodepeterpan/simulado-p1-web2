@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION)){
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
     exit("Você precisa estar logado para acessar esta página!");
 }
 
@@ -249,6 +249,6 @@ $_SESSION['questionario'] = [
 
 ];
 
-header('Location: quiz.php');
+header('Location: ../pages/quiz.php');
 
 ?>
