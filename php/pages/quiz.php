@@ -72,11 +72,12 @@ $questionario = $_SESSION['questionario'] ?? [];
                     <?php endif; ?>
 
                 <?php endforeach; ?>
-                
+
                 <input type="hidden" name="concluido" value="concluido">
                 <button type="submit">Enviar</button>
             </form>
         </div>
     </main>
+    <script src="../../js/script.js"></script>
 </body>
 </html>

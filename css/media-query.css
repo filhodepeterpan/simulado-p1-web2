@@ -1,3 +1,10 @@
 @media (max-width: 1200px) {
-    
+    #conta p{
+        display: none;
+    }
+
+    #header{
+        position: relative;
+        max-width: 100%;
+    }
 }
