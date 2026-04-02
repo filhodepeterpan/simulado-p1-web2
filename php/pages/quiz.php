@@ -28,8 +28,8 @@ $questionario = $_SESSION['questionario'] ?? [];
             <h1>Simulado P1</h1>
         </div>
         <div id="conta">
-            <p>Aluno: <?= $nome ?></p>
-            <p>Email: <?= $email ?></p>
+            <p><b>Aluno:</b> <?= $nome ?></p>
+            <p><b>Email:</b> <?= $email ?></p>
             <form action="../scripts/logout.php" method="POST">
                 <button type="submit">Sair</button>
             </form>
@@ -42,35 +42,37 @@ $questionario = $_SESSION['questionario'] ?? [];
 
                 <?php foreach($questionario as $questao):?>
                     <h3 id="enunciado"><?= $questao['num'] ?>. <?= $questao['enunciado']?></h3>
-                    
-                    <div class="questao">
-                        <?php if ($questao['tipoQuestao'] == 'select'):?>
+                      
+                    <?php if ($questao['tipoQuestao'] == 'select'):?>
+                        <div class="questao">
                             <select name="respostas[<?= $questao['num'] ?>]">
                                 <?php foreach ($questao['alternativas'] as $alternativa): ?>
                                     <option value="<?= $alternativa ?>"><?= $alternativa ?></option>
                                 <?php endforeach; ?>
                             </select>
-                        <?php endif; ?>
-                    </div>
+                        </div>
+                    <?php endif; ?>
 
-                    <div class="questao">
-                        <?php if ($questao['tipoQuestao'] == 'checkbox'):?>
+                    
+                    <?php if ($questao['tipoQuestao'] == 'checkbox'):?>
+                        <div class="questao">
                             <?php foreach ($questao['alternativas'] as $alternativa): ?>
                                 <input type="checkbox" name="respostas[<?= $questao['num'] ?>][]" value="<?= $alternativa ?>"><?= $alternativa ?>
                                 <br>
                             <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
+                        </div>
+                    <?php endif; ?>
 
-                    <div class="questao">
-                        <?php if ($questao['tipoQuestao'] == 'radio'):?>
+                    <?php if ($questao['tipoQuestao'] == 'radio'):?>
+                        <div class="questao">
                             <?php foreach ($questao['alternativas'] as $alternativa): ?>
                                 <input type="radio" name="respostas[<?= $questao['num'] ?>]" value="<?= $alternativa ?>"> <?= $alternativa ?>
                             <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
+                        </div>
+                    <?php endif; ?>
 
                 <?php endforeach; ?>
+                
                 <input type="hidden" name="concluido" value="concluido">
                 <button type="submit">Enviar</button>
             </form>

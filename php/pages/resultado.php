@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Simulado P1</h1>
         </div>
         <div id="conta">
-            <p>Aluno: <?= $nome ?></p>
-            <p>Email: <?= $email ?></p>
+            <p><b>Aluno:</b> <?= $nome ?></p>
+            <p><b>Email:</b> <?= $email ?></p>
             <form action="../scripts/logout.php" method="POST">
                 <button type="submit">Sair</button>
             </form>
@@ -56,9 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
 
     <main>
-        <div>
-            <h2>Resultado: <?= $acertos ?> / <?= count($questionario) ?></h2>
-            <br>Seu recorde atual é: <?= isset($_SESSION['recorde']) ? $_SESSION['recorde'] : 0 ?>
+        <div id="resultado">
+            <h2>Prontinho, <?= $nome ?>!</h2>
+            <h3>Seu resultado foi: <?= $acertos ?> / <?= count($questionario) ?></h3>
+            <br>
+            <p>Seu recorde atual é: <b><?= isset($_SESSION['recorde']) ? $_SESSION['recorde'] : 0 ?></b></p>
             <?php if ($acertos >= 18): ?>
                 <p>Excelente!</p>
 
@@ -66,9 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Quase lá!</p>
             
             <?php else: ?>
-                <p>Precisa revisar.</p>
+                <p>Precisa revisar...</p>
 
             <?php endif; ?> 
+            <br><br>
             <div id="mensagem-motivacional">
                 <span>"<?= $mensagemMotivacional?>."</span>
             </div>

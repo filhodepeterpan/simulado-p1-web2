@@ -27,24 +27,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     <main>
         <div id="login">
+            <h1>Simulado P1 - DEV WEB 2</h1>
             <form action="#" method="post">
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" required>
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
-
-                <div>
+                <div class="form-campos">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome" required maxlength="30">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required maxlength="50">
+                </div>
+                <div class="form-botoes">
                     <button type="submit">Logar</button>
                 </div>
             </form>
         </div>
     </main>
-
-    <footer>
-        <div>
-            <p>Github: @filhodepeterpan</p>
-        </div>
-    </footer>
 
     <script src="js/script.js"></script>
 </body>
