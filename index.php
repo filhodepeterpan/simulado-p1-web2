@@ -1,6 +1,11 @@
 <?php 
 session_start();
 
+if (isset($_SESSION['nome'])){
+    header('Location: php/pages/quiz.php');
+    exit("Você já está logado!");
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST['nome'];
     $email = $_POST['email'];
